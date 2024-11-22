@@ -1,5 +1,4 @@
 <?php
-
 require './../config/db.php';
 
 if(isset($_POST['submit'])) {
@@ -14,6 +13,10 @@ if(isset($_POST['submit'])) {
 
     $uploadPath = $_SERVER['DOCUMENT_ROOT'].'/upload/'.$randomFilename;
 
+    if (!is_dir($_SERVER['DOCUMENT_ROOT'].'/upload')) {
+        mkdir($_SERVER['DOCUMENT_ROOT'].'/upload', 0777, true);
+    }
+
     $upload = move_uploaded_file($tempImage,$uploadPath);
 
     if($upload) {
@@ -25,3 +28,5 @@ if(isset($_POST['submit'])) {
     }
 
 }
+
+?>

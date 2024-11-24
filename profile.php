@@ -2,7 +2,7 @@
 session_start();
 
 if($_SESSION['role'] != 'user') {
-    echo "Anda bukan role user";
+    session_destroy();
     header('Location: index.php');
 }
  ?>
